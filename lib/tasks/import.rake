@@ -23,4 +23,16 @@ namespace :recipes do
     end
     p attributes.to_set
   end
+
+  task insert_users: :environment do
+    # This script will insert users from the json file
+    users = []
+    file = File.join(Rails.root, 'recipes.json')
+    File.open(file).each_line do |line|
+      record = JSON.parse(line).to_h
+      users.push(User.new(handle: record['author']))
+    end
+
+    User.import users
+  end
 end
