@@ -35,4 +35,52 @@ namespace :recipes do
 
     User.import users
   end
+
+  task insert_recipes: :environment do
+    # This script will insert recipes from the json file
+
+    file = File.join(Rails.root, 'recipes.json')
+    recipes = []
+    users = fetch_users
+    File.open(file).each_line do |line|
+      record = JSON.parse(line).to_h
+      recipes << new_recipe(record, users[record['author']])
+    end
+
+    Recipe.import recipes, recursive: true
+  end
+
+  private
+
+  def new_recipe(record, user)
+    recipe = Recipe.new(
+      name: record['name'],
+      preparation_time: record['prep_time'],
+      number_of_comments: record['nb_comments'],
+      external_id: record['external_id'],
+      image_url: record['image'],
+      total_time_formatted: record['total_time'],
+      cook_time_formatted: record['cook_time'],
+      author_tip: record['author_tip'],
+      rating: record['rate'],
+      budget: record['budget'],
+      number_of_servings: record['people_quantity'],
+      difficulty: record['difficulty'].downcase,
+      user_id: user
+    )
+
+    record['ingredients'].each do |ingredient|
+      recipe.ingredients.build(description: ingredient)
+    end
+
+    record['tags'].each do |tag|
+      recipe.tags.build(description: tag)
+    end
+
+    recipe
+  end
+
+  def fetch_users
+    Hash[*User.all.pluck(:handle, :id).flatten]
+  end
 end
