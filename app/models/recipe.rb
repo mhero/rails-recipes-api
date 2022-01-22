@@ -20,4 +20,8 @@
 #
 
 class Recipe < ApplicationRecord
+  has_many :ingredients, dependent: :destroy
+  has_many :tags, dependent: :destroy
+  belongs_to :user
+  
 end
