@@ -126,6 +126,8 @@ GEM
     nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
       racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
+      racc (~> 1.4)
     pg (1.2.3)
     puma (5.5.2)
       nio4r (~> 2.0)
@@ -191,6 +193,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   activerecord-import
@@ -209,4 +212,4 @@ RUBY VERSION
    ruby 3.1.0p0
 
 BUNDLED WITH
-   2.2.26
+   2.3.3
