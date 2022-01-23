@@ -29,3 +29,5 @@
 /config/master.key
 
 postgres-data/
+
+recipes-react/.env
