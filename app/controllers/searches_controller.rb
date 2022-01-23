@@ -9,11 +9,16 @@ class SearchesController < ApplicationController
 
   def search_response
     keyword = permitted_params[:keyword]
-    page = permitted_params[:page] || 1
-    keyword.present? ? Recipe.tasty_search(keyword).page(page) : {}
+    page = valid_page
+    keyword.present? ? Recipe.tasty_search(keyword).page(page) : Recipe.all.page(1)
   end
 
   def permitted_params
     params.permit(:keyword, :page).to_h
+  end
+
+  def valid_page
+    page = permitted_params[:page] 
+    page.to_i.to_s == page ? page.to_i : 1
   end
 end
