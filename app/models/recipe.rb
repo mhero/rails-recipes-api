@@ -31,7 +31,7 @@ class Recipe < ApplicationRecord
     ingredients: [:description],
     tags: [:description],
     user: :handle
-  }, using: { tsearch: { dictionary: 'french' } }
+  }, using: { tsearch: { dictionary: 'french' } }, order_within_rank: 'recipes.updated_at DESC'
 
   has_many :ingredients, dependent: :destroy
   has_many :tags, dependent: :destroy
