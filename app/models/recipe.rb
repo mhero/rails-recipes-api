@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: recipes
@@ -24,8 +26,14 @@
 #
 
 class Recipe < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :tasty_search, associated_against: {
+    ingredients: [:description],
+    tags: [:description],
+    user: :handle
+  }, using: { tsearch: { dictionary: 'french' } }
+
   has_many :ingredients, dependent: :destroy
   has_many :tags, dependent: :destroy
   belongs_to :user
-  
 end
