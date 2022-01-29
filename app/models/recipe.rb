@@ -29,9 +29,14 @@ class Recipe < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :tasty_search, associated_against: {
     ingredients: [:description],
-    tags: [:description],
-    user: :handle
-  }, using: { tsearch: { dictionary: 'french' } }, order_within_rank: 'recipes.updated_at DESC'
+    tags: [:description]
+  },
+  using: {
+    tsearch: {
+      dictionary: 'french', any_word: true
+    }
+  },
+  order_within_rank: 'recipes.updated_at DESC'
 
   has_many :ingredients, dependent: :destroy
   has_many :tags, dependent: :destroy

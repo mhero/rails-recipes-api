@@ -9,7 +9,8 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json.size).to eq(25)
+      expect(json["result_list"].size).to eq(25)
+      expect(json.size).to eq(4)
     end
 
     it 'returns status code 200' do
@@ -24,7 +25,8 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json.size).to eq(25)
+      expect(json["result_list"].size).to eq(25)
+      expect(json.size).to eq(4)
     end
 
     it 'returns status code 200' do
@@ -39,7 +41,8 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json.size).to eq(25)
+      expect(json["result_list"].size).to eq(25)
+      expect(json.size).to eq(4)
     end
 
     it 'returns status code 200' do
@@ -54,7 +57,8 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json.size).to eq(25)
+      expect(json["result_list"].size).to eq(25)
+      expect(json.size).to eq(4)
     end
 
     it 'returns status code 200' do
@@ -69,7 +73,8 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json.size).to eq(25)
+      expect(json["result_list"].size).to eq(25)
+      expect(json.size).to eq(4)
     end
 
     it 'returns status code 200' do
@@ -84,7 +89,8 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json.size).to eq(22)
+      expect(json["result_list"].size).to eq(22)
+      expect(json.size).to eq(4)
     end
 
     it 'returns status code 200' do
