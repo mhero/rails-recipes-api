@@ -44,11 +44,10 @@ function App() {
       .get(`${process.env.REACT_APP_API_URL}/searches?keyword=${input}`)
       .then((response) => {
         clear();
-        debugger;
         if (response.data.length === 0) {
           nothingFound();
         } else {
-          setRecipes(response.data);
+          setRecipes(response.data.result_list);
         }
       })
       .catch((error) => {
