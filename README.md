@@ -92,7 +92,7 @@ cd recipes-react && npm install
 8. Migration tasks(run once) 
 ```
 rake recipes:insert_users
-rake recipes:insert_ingredients
+rake recipes:insert_recipes
 rake curate:convert_string_times_to_seconds
 ```
 
