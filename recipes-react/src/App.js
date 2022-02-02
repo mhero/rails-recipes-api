@@ -44,7 +44,7 @@ function App() {
       .get(`${process.env.REACT_APP_API_URL}/searches?keyword=${input}`)
       .then((response) => {
         clear();
-        if (response.data.length === 0) {
+        if (response.data.data.length === 0) {
           nothingFound();
         } else {
           setRecipes(response.data.data);
