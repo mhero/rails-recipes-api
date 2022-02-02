@@ -60,6 +60,7 @@ brew install node
 rvm install "ruby-3.1.0"
 rvm use 3.1.0
 brew install postgresql
+brew install postgis
 ```
 
 2. Clone repository
@@ -98,7 +99,7 @@ rake curate:convert_string_times_to_seconds
 
 9. run backend (on aterminal window)
 ```
-rails server --binding 0.0.0.0 --port 4567
+rails server --binding 0.0.0.0 --port 3000
 ```
 
 10. run frontend (on a different terminal window)

@@ -14,3 +14,9 @@ ADD Gemfile.tip $APP_HOME/
 RUN bundle install
 
 ADD . $APP_HOME
+RUN rm -rf $APP_HOME/tmp
+RUN apt-get update \
+  && apt-get install -y postgresql-contrib \
+  && apt-get install sudo \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

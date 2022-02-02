@@ -34,9 +34,13 @@ class Recipe < ApplicationRecord
   using: {
     tsearch: {
       dictionary: 'french', any_word: true
+    },
+    trigram: {
+      threshold: 0.2
     }
   },
-  order_within_rank: 'recipes.updated_at DESC'
+  order_within_rank: 'recipes.updated_at DESC',
+  ranked_by: ':tsearch + :trigram'
 
   has_many :ingredients, dependent: :destroy
   has_many :tags, dependent: :destroy
