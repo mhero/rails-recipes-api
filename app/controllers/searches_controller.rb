@@ -13,7 +13,6 @@ class SearchesController < ApplicationController
       page: permitted_params[:page]
     )
     search_response.search
-    search_response
   end
 
   def serialized_response(response)
@@ -22,7 +21,7 @@ class SearchesController < ApplicationController
     options[:meta] = { total: response.total_pages }
 
     RecipeSerializer.new(
-      response.result_list,
+      response,
       options
     ).serialized_json
   end

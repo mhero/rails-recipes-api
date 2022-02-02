@@ -6,17 +6,14 @@ class SearchResult
   def initialize(keyword:, page:)
     @keyword = keyword
     @page = page
-    @result_list = []
-    @total_pages = 1
   end
 
   def search
-    @result_list = if @keyword.present?
-                     Recipe.tasty_search(@keyword).page(valid_page).includes(:ingredients)
-                   else
-                     Recipe.all.page(1).includes(:ingredients)
-                   end
-    @total_pages = @result_list.total_pages
+    if @keyword.present?
+      Recipe.tasty_search(@keyword).page(valid_page).includes(:ingredients)
+    else
+      Recipe.all.page(1).includes(:ingredients)
+    end
   end
 
   private
