@@ -9,11 +9,12 @@ class SearchResult
   end
 
   def search
-    if @keyword.present?
-      Recipe.tasty_search(@keyword).page(valid_page).includes(:ingredients)
-    else
-      Recipe.all.page(1).includes(:ingredients)
-    end
+    @search ||= if @keyword.present?
+                  Recipe.tasty_search(@keyword).page(valid_page)
+                else
+                  Recipe.all.page(1)
+                end
+    @search.includes(:ingredients, :tags)
   end
 
   private
