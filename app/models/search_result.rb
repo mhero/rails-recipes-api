@@ -12,9 +12,9 @@ class SearchResult
 
   def search
     @result_list = if @keyword.present?
-                     Recipe.tasty_search(@keyword).page(valid_page)
+                     Recipe.tasty_search(@keyword).page(valid_page).includes(:ingredients)
                    else
-                     Recipe.all.page(1)
+                     Recipe.all.page(1).includes(:ingredients)
                    end
     @total_pages = @result_list.total_pages
   end

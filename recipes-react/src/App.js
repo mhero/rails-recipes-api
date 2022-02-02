@@ -47,7 +47,7 @@ function App() {
         if (response.data.length === 0) {
           nothingFound();
         } else {
-          setRecipes(response.data.result_list);
+          setRecipes(response.data.data);
         }
       })
       .catch((error) => {

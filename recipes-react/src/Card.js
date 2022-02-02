@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
 const Card = ({ item }) => {
+  debugger;
   return (
     <li>
-      <div>{item.name}</div>
+      <div>{item.attributes.name}</div>
     </li>
   );
 };
