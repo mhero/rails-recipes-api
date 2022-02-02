@@ -7,6 +7,7 @@ function App() {
   const [recipes, setRecipes] = useState(null);
   const [error, setError] = useState(null);
   const [ingredients, setIngredients] = useState([]);
+  const [page, setPage] = useState(1);
 
   const clear = () => {
     setRecipes(null);
@@ -42,7 +43,9 @@ function App() {
     }
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/searches?keyword=${input}`)
+      .get(
+        `${process.env.REACT_APP_API_URL}/searches?keyword=${input}&page=${page}`
+      )
       .then((response) => {
         clear();
         if (response.data.data.length === 0) {
@@ -63,6 +66,16 @@ function App() {
     getRecipes(event.target.value);
   };
 
+  const getIngredients = (recipe) => {
+    const currentRecipeIngredients = recipe.relationships.ingredients.data.map(
+      (el) => el.id
+    );
+    const currentIngredients = ingredients.filter((el) =>
+      currentRecipeIngredients.includes(el.id)
+    );
+    return currentIngredients;
+  };
+
   return (
     <div className="App">
       <label>
@@ -72,7 +85,13 @@ function App() {
       <ul>
         {recipes &&
           recipes.map((item) => {
-            return <Card key={item.id} item={item} />;
+            return (
+              <Card
+                key={item.id}
+                item={item}
+                ingredients={getIngredients(item)}
+              />
+            );
           })}
       </ul>
       <div>{error && error.message}</div>
