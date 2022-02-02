@@ -6,6 +6,7 @@ const axios = require("axios").default;
 function App() {
   const [recipes, setRecipes] = useState(null);
   const [error, setError] = useState(null);
+  const [ingredients, setIngredients] = useState([]);
 
   const clear = () => {
     setRecipes(null);
@@ -48,6 +49,9 @@ function App() {
           nothingFound();
         } else {
           setRecipes(response.data.data);
+          setIngredients(
+            response.data.included.filter((el) => (el.type = "ingredient"))
+          );
         }
       })
       .catch((error) => {
