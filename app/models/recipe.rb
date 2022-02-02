@@ -26,6 +26,8 @@
 #
 
 class Recipe < ApplicationRecord
+  max_paginates_per 9
+
   include PgSearch::Model
   pg_search_scope :tasty_search, associated_against: {
     ingredients: [:description],

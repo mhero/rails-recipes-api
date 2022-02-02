@@ -14,6 +14,9 @@ function App() {
     setError(null);
   };
 
+  const MINIMUM_INGREDIENTS_WORD = 4;
+  const MAXIMUM_INGREDIENTS_PER_RECIPE = 5;
+
   const updateError = (error) => {
     clear();
     if (error.response != null && error.response.status === 404) {
@@ -38,7 +41,7 @@ function App() {
 
   const getRecipes = (input) => {
     clear();
-    if (input.length < 4) {
+    if (input.length < MINIMUM_INGREDIENTS_WORD) {
       return;
     }
 
@@ -73,16 +76,22 @@ function App() {
     const currentIngredients = ingredients.filter((el) =>
       currentRecipeIngredients.includes(el.id)
     );
-    return currentIngredients;
+    return currentIngredients.slice(0, MAXIMUM_INGREDIENTS_PER_RECIPE);
   };
 
   return (
-    <div className="App">
-      <label>
-        Input a keyword to search for recipe:
-        <input type="text" onChange={handleChange} />
-      </label>
-      <ul>
+    <div className="container">
+      <div className="search-container">
+        <label>
+          Search for recipe
+          <input
+            type="text"
+            onChange={handleChange}
+            placeholder="Search a recipe e.g: chocolate"
+          />
+        </label>
+      </div>
+      <div className="recipes-container">
         {recipes &&
           recipes.map((item) => {
             return (
@@ -93,7 +102,7 @@ function App() {
               />
             );
           })}
-      </ul>
+      </div>
       <div>{error && error.message}</div>
     </div>
   );
