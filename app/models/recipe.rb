@@ -33,6 +33,7 @@ class Recipe < ApplicationRecord
     ingredients: [:description],
     tags: [:description]
   },
+  against: [:name],
   using: {
     tsearch: {
       dictionary: 'french', any_word: true
