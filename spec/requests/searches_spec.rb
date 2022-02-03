@@ -9,7 +9,7 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json["data"].size).to eq(25)
+      expect(json["data"].size).to eq(9)
       expect(json.size).to eq(3)
     end
 
@@ -25,7 +25,7 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json["data"].size).to eq(25)
+      expect(json["data"].size).to eq(9)
       expect(json.size).to eq(3)
     end
 
@@ -41,7 +41,7 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json["data"].size).to eq(25)
+      expect(json["data"].size).to eq(9)
       expect(json.size).to eq(3)
     end
 
@@ -57,7 +57,7 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json["data"].size).to eq(25)
+      expect(json["data"].size).to eq(9)
       expect(json.size).to eq(3)
     end
 
@@ -73,7 +73,7 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json["data"].size).to eq(25)
+      expect(json["data"].size).to eq(9)
       expect(json.size).to eq(3)
     end
 
@@ -89,7 +89,7 @@ RSpec.describe 'Searches', type: :request do
     it 'returns searches when there is no filter' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json["data"].size).to eq(22)
+      expect(json["data"].size).to eq(9)
       expect(json.size).to eq(3)
     end
 
